@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.rosestack</groupId>
+        <artifactId>rose-spring-boot-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>../rose-spring-boot-parent/pom.xml</relativePath>
+    </parent>
+    <groupId>io.github.rosestack</groupId>
+    <artifactId>rose-spring-boot-core</artifactId>
+    <version>${revision}</version>
+
+    <name>Rose :: Spring Boot :: Core</name>
+    <description>Rose Spring Boot Core</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.rosestack</groupId>
+            <artifactId>rose-java-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.rosestack</groupId>
+            <artifactId>rose-spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.rosestack</groupId>
+            <artifactId>rose-annotation-processor</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
+</project>

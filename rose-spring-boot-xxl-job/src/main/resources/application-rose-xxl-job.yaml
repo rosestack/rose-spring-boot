@@ -1,0 +1,42 @@
+# XXL-Job 默认配置示例（可在业务服务中覆盖）
+rose:
+  xxl-job:
+    enabled: true
+    admin-addresses: http://127.0.0.1:8080/xxl-job-admin
+    # 执行器名称（默认回退到 spring.application.name）
+    # appname: demo-service
+    port: 9999
+    # access-token: ''
+    log-path: logs/xxl-job/
+    log-retention-days: 30
+
+    # 指标上报（启用后暴露切面埋点）
+    metrics:
+      enabled: false
+
+    # Admin 客户端能力（启用后在启动时自动检查/注册任务）
+    client:
+      enabled: false
+      # 登录账号（必填）
+      # username: admin
+      # 登录密码（某些版本可选）
+      # password: 123456
+      login-path: /login
+      # 登录表单字段名
+      username-param: userName
+      password-param: password
+      # cookie 名（默认 Cookie）
+      cookie-name: Cookie
+
+      # 任务默认值（可被注解覆盖）
+      defaults:
+        author: admin
+        # 告警邮箱，多个逗号分隔
+        # alarm-email: dev@company.com
+        schedule-type: CRON
+        glue-type: BEAN
+        executor-route-strategy: ROUND
+        misfire-strategy: DO_NOTHING
+        executor-block-strategy: SERIAL_EXECUTION
+        executor-timeout: 0
+        executor-fail-retry-count: 0

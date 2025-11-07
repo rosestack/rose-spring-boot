@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <springProperty scope="context" name="appName" source="spring.application.name"/>
+
+  <!-- 控制台输出配置 -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <!-- 文件输出配置 -->
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/${appName}.log</file>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/todo-backend.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>100MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <!-- 错误日志文件 -->
+  <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/${appName}-error.log</file>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/todo-backend-error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>50MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <!-- 异步日志配置 -->
+  <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="FILE"/>
+    <queueSize>1024</queueSize>
+    <discardingThreshold>0</discardingThreshold>
+    <includeCallerData>false</includeCallerData>
+  </appender>
+
+  <!-- 应用日志级别配置 -->
+  <logger name="com.example.todo" level="DEBUG" additivity="false">
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="ASYNC_FILE"/>
+    <appender-ref ref="ERROR_FILE"/>
+  </logger>
+
+  <!-- Spring框架日志级别 -->
+  <logger name="org.springframework" level="INFO"/>
+  <logger name="org.springframework.web" level="DEBUG"/>
+  <logger name="org.springframework.security" level="DEBUG"/>
+
+  <!-- Hibernate日志级别 -->
+  <logger name="org.hibernate" level="INFO"/>
+  <logger name="org.hibernate.SQL" level="DEBUG"/>
+  <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+
+  <!-- 数据库连接池日志 -->
+  <logger name="com.zaxxer.hikari" level="INFO"/>
+
+  <!-- HTTP请求日志 -->
+  <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG"/>
+
+  <!-- 根日志级别 -->
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="ASYNC_FILE"/>
+    <appender-ref ref="ERROR_FILE"/>
+  </root>
+
+  <!-- 开发环境配置 -->
+  <springProfile name="dev">
+    <logger name="com.example.todo" level="DEBUG"/>
+  </springProfile>
+
+  <!-- 测试环境配置 -->
+  <springProfile name="test">
+    <logger name="com.example.todo" level="INFO"/>
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.hibernate.SQL" level="WARN"/>
+    <root level="WARN">
+      <appender-ref ref="CONSOLE"/>
+    </root>
+  </springProfile>
+
+  <!-- 生产环境配置 -->
+  <springProfile name="prod">
+    <logger name="com.example.todo" level="INFO"/>
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.hibernate.SQL" level="WARN"/>
+    <root level="WARN">
+      <appender-ref ref="ASYNC_FILE"/>
+      <appender-ref ref="ERROR_FILE"/>
+    </root>
+  </springProfile>
+</configuration>
+

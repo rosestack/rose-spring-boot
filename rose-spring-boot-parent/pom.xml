@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.rosestack</groupId>
+        <artifactId>rose-spring-boot</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>io.github.rosestack</groupId>
+    <artifactId>rose-spring-boot-parent</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>Rose :: Spring Boot :: Parent</name>
+    <description>Rose Spring Boot Parent</description>
+
+    <properties>
+        <rose-java.version>0.0.3-SNAPSHOT</rose-java.version>
+        <rose-spring.version>0.0.1-SNAPSHOT</rose-spring.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.rosestack</groupId>
+                <artifactId>rose-java-bom</artifactId>
+                <version>${rose-java.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.rosestack</groupId>
+                <artifactId>rose-spring-bom</artifactId>
+                <version>${rose-spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>spring-boot-3.0</id>
+            <properties>
+                <spring-boot.version>3.0.13</spring-boot.version>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>spring-boot-3.1</id>
+            <properties>
+                <spring-boot.version>3.1.12</spring-boot.version>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>spring-boot-3.2</id>
+            <properties>
+                <spring-boot.version>3.2.12</spring-boot.version>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>spring-boot-3.3</id>
+            <properties>
+                <spring-boot.version>3.3.13</spring-boot.version>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>spring-boot-3.4</id>
+            <properties>
+                <spring-boot.version>3.4.11</spring-boot.version>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>spring-boot-3.5</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring-boot.version>3.5.7</spring-boot.version>
+            </properties>
+        </profile>
+    </profiles>
+</project>

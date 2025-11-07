@@ -1,0 +1,32 @@
+rose:
+  audit:
+    # 是否启用审计日志功能
+    enabled: true
+
+    # 敏感字段脱敏配置
+    mask-fields: [ ]
+
+    # 存储配置
+    storage:
+      # 存储类型：目前主要支持 database
+      type: database
+
+    # 数据保留配置
+    retention:
+      # 数据保留天数
+      days: 365
+      # 是否启用自动清理
+      auto-cleanup: true
+      # 清理任务执行时间（cron表达式）
+      cleanup-cron: "0 0 2 * * ?"
+
+    # 事件过滤配置
+    filter:
+      # 忽略的用户
+      ignore-users: [ "system", "admin" ]
+      # 忽略的IP地址
+      ignore-ips: [ "127.0.0.1", "::1" ]
+      # 忽略的URI模式（支持通配符）
+      ignore-uri-patterns: [ "/health/**", "/actuator/**", "/favicon.ico" ]
+      # 最小风险等级
+      min-risk-level: LOW

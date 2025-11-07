@@ -1,0 +1,50 @@
+spring:
+  web:
+    locale: zh_CN
+    locale-resolver: accept_header
+  messages:
+    basename: messages
+    encoding: UTF-8
+    cache-duration: PT1H
+  # Jackson 序列化配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+      fail-on-empty-beans: false
+      indent-output: false
+    deserialization:
+      fail-on-unknown-properties: false
+      accept-empty-string-as-null-object: true
+
+# 监控配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+logging:
+  level:
+    root: INFO
+  #    com.baomidou.mybatisplus.core.mapper: DEBUG
+
+rose:
+  web:
+    # 是否启用 Web 功能
+    enabled: true
+    # 过滤器配置
+    filter:
+      trace:
+        enabled: true
+      xss:
+        enabled: true
+      caching-request:
+        enabled: true
+      excludePaths: [ ]
+
+springdoc:
+  api-docs:
+    enabled: true

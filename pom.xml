@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.rosestack</groupId>
+        <artifactId>rose-build</artifactId>
+        <version>0.1.2</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>io.github.rosestack</groupId>
+    <artifactId>rose-spring-boot</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>Rose :: Spring Boot</name>
+    <description>Rose Projects for Spring Boot</description>
+    <url>https://github.com/rosestack/rose-spring-boot</url>
+
+    <organization>
+        <name>RoseStack</name>
+        <url>https://github.com/rosestack</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>chensoul</id>
+            <name>Chensoul</name>
+            <email>ichensoul@gmail.com</email>
+            <organization>RoseStack</organization>
+            <roles>
+                <role>lead</role>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/rosestack/rose-spring-boot</url>
+        <connection>scm:git:git://github.com/rosestack/rose-spring-boot.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/rosestack/rose-spring-boot.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <revision>0.0.3</revision>
+        <java.version>17</java.version>
+
+        <flatten.mode>ossrh</flatten.mode>
+    </properties>
+
+    <modules>
+        <module>rose-spring-boot-bom</module>
+        <module>rose-spring-boot-parent</module>
+        <module>rose-spring-boot-core</module>
+        <!--        <module>rose-spring-boot-audit</module>-->
+        <!--        <module>rose-spring-boot-web</module>-->
+        <!--        <module>rose-spring-boot-xxl-job</module>-->
+    </modules>
+
+</project>
