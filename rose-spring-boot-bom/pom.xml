@@ -14,8 +14,8 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
-    <name>Rose :: Spring Boot Dependencies</name>
-    <description>Rose Spring Boot Dependencies</description>
+    <name>Rose :: Spring Boot Bom</name>
+    <description>Rose Spring Boot Bom</description>
 
     <dependencyManagement>
         <dependencies>

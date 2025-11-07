@@ -1,6 +1,6 @@
 package io.github.rosestack.spring.boot.audit.config;
 
-import io.github.rosestack.crypto.FieldEncryptor;
+import io.github.rosestack.encrypt.FieldEncryptor;
 import io.github.rosestack.spring.boot.audit.aspect.AuditAspect;
 import io.github.rosestack.spring.boot.audit.listener.AuditEventListener;
 import io.github.rosestack.spring.boot.audit.mapper.AuditLogDetailMapper;

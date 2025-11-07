@@ -52,7 +52,7 @@
     </scm>
 
     <properties>
-        <revision>0.0.3</revision>
+        <revision>0.0.3-SNAPSHOT</revision>
         <java.version>17</java.version>
 
         <flatten.mode>ossrh</flatten.mode>

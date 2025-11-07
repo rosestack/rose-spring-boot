@@ -2,7 +2,7 @@ package io.github.rosestack.spring.boot.audit.support;
 
 import io.github.rosestack.core.util.JsonUtils;
 import io.github.rosestack.core.util.SensitiveUtils;
-import io.github.rosestack.crypto.FieldEncryptor;
+import io.github.rosestack.encrypt.FieldEncryptor;
 import io.github.rosestack.spring.boot.audit.annotation.Audit;
 import io.github.rosestack.spring.boot.audit.entity.AuditLog;
 import io.github.rosestack.spring.boot.audit.entity.AuditLogDetail;

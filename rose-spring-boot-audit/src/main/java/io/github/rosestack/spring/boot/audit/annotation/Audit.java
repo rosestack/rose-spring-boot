@@ -1,6 +1,6 @@
 package io.github.rosestack.spring.boot.audit.annotation;
 
-import io.github.rosestack.crypto.enums.EncryptType;
+import io.github.rosestack.encrypt.enums.EncryptType;
 import io.github.rosestack.spring.boot.audit.enums.AuditEventType;
 import io.github.rosestack.spring.boot.audit.enums.AuditRiskLevel;
 import java.lang.annotation.*;
